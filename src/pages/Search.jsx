@@ -3,18 +3,22 @@ import Header from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import loadingTitles from "../assets/movieReel.png";
+import Movie from "../components/ui/Movie"
 
-const Search = () => {
+const Search = ({data}) => {
   const { title } = useParams();
+
   const location = useLocation();
   const { searchedTitle } = location.state || {};
+  const navigate = useNavigate();
 
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTitle, setSearchTitle] = useState(title);
   const [sorted, setSorted] = useState([]);
+  // const [imdbID, setimdbID] = useState([])
 
   // firing the search if a user clicks the magnifying glass
   function onSearch() {
@@ -29,17 +33,16 @@ const Search = () => {
     const { data } = await axios.get(
       `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}`,
     );
-   await setSearchMovies(data.Search.slice(0, 9));
-  //  console.log(data.Search)
+    await setSearchMovies(data.Search.slice(0, 9));
     setLoading(false);
+    
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       findMovies();
       onSearch();
-      switchPage();
-    }, 3000);
+    // }, 3000);
   }, []);
 
   async function sortMovies(filterOption) {
@@ -54,31 +57,32 @@ const Search = () => {
 
   async function switchPage(page) {
     // A good candidate for switch/case... maybe more pages too..
-    try{
-    if (page === "1") {
-      const { data } = await axios.get(
-        `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle  || "alone"}&page=1`,
-      );
-      setSearchMovies(data.Search.slice(0, 9));
-    } else if (page === "2") {
-      const { data } = await axios.get(
-        `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}&page=2`,
-      );
-      // console.log(data)
-      setSearchMovies(data.Search.slice(0, 9));
-    } else if (page === "3") {
-      const { data } = await axios.get(
-        `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}&page=3`,
-      );
-      setSearchMovies(data.Search.slice(0, 9));
-      // console.log(data)
+    try {
+      if (page === "1") {
+        const { data } = await axios.get(
+          `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}&page=1`,
+        );
+        setSearchMovies(data.Search.slice(0, 9));
+      } else if (page === "2") {
+        const { data } = await axios.get(
+          `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}&page=2`,
+        );
+        // console.log(data)
+        setSearchMovies(data.Search.slice(0, 9));
+      } else if (page === "3") {
+        const { data } = await axios.get(
+          `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}&page=3`,
+        );
+        setSearchMovies(data.Search.slice(0, 9));
+        console.log(data)
+      }
+    } catch (error) {
+      alert("Sorry! Couldn't find that !");
+      console.error(error);
     }
   }
-  catch (error ){
-    alert ("Sorry! Couldn't find that !")
-    console.error(error)
-  }
-  }
+
+
 
   return (
     <>
@@ -173,7 +177,7 @@ const Search = () => {
                   className="product__card--img"
                 />
                 <p className="product__title"></p>
-                
+
                 <p className="product__detail"></p>
               </div>
               <div className="product__card">
@@ -183,7 +187,7 @@ const Search = () => {
                   className="product__card--img"
                 />
                 <p className="product__title"></p>
-                
+
                 <p className="product__detail"></p>
               </div>
               <div className="product__card">
@@ -193,35 +197,40 @@ const Search = () => {
                   className="product__card--img"
                 />
                 <p className="product__title"></p>
-                
+
                 <p className="product__detail"></p>
               </div>
             </div>
           ))
         ) : (
           <div className="movie__list">
-            {searchMovies.map((movie, index) => (
-              <>
-                <div className="movie__card--container">
-                  <div className="movie__card" key={index}>
+            {searchMovies.map((movie) => (
+              < >
+              <Movie movie={movie} key={movie.imdbID} 
+              // onClick={() => moviePage()}
+              />
+                {/* <div className="movie__card--container">
+                  <div
+                    className="movie__card"
+                    key={index}
+                    onClick={() => moviePage()}
+                  >
                     <div key={movie.imdbID}>
                       <img
                         src={movie.Poster}
                         alt=""
                         className="movie__card--img"
                       />
-                      <p className="movie__card-title">{movie.Title} </ p>
+                      <p className="movie__card-title">{movie.Title} </p>
                       <p className="movie__card-year">{movie.Year}</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </>
             ))}
           </div>
         )}
       </div>
-
-      
     </>
   );
 };

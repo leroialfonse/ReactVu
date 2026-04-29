@@ -52,15 +52,18 @@ const Home = () => {
         </ul>
       </nav>
       <div className="row">
-        <h2 className="home__tag">
-          The best way to find your next <span className="red">favorite!</span>
-        </h2>
-        <h3>
-          <span className="red">MovieVu</span> plays the hits
-        </h3>
+        <div className="marquee">
+          
+          <h2 className="home__tag">
+            The best way to find your next <span className="red">favorite!</span>
+          </h2>
+          <h3>
+            <span className="red">MovieVu</span> plays the hits
+          </h3>
 
        
 
+            </div>
         <div className="home__movies">
           <div className="search__el">
             <input
@@ -69,7 +72,7 @@ const Home = () => {
               value={searchedTitle}
               placeholder="Search Movies..."
               onChange={(e) => setSearchedTitle(e.target.value)}
-      
+              
               onKeyDown={(event) => {
 
                 if (event.key === "Enter") {
@@ -77,21 +80,21 @@ const Home = () => {
                 }
               }}
               className="home__search"
-            />
+              />
 
             <button
               className="search__button"
               value={searchedTitle}
               style={{ width: "75px" }}
               onClick={() => handleRedirect(searchedTitle)}
-            >
+              >
               <FontAwesomeIcon
                 className="search"
                 icon={faMagnifyingGlass}
                 value={searchedTitle}
                 style={{ fontSize: "20px" }}
                 onClick={(e) => handleRedirect(searchedTitle)}
-              />
+                />
             </button>
           </div>
           <img src={Movies} className="home__movies--img" alt="" />
