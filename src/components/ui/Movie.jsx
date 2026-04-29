@@ -36,6 +36,7 @@ const Movie = ({movie}) => {
                       />
                       <p className="movie__card-title">{movie.Title} </p>
                       <p className="movie__card-year">{movie.Year}</p>
+                    <span className="tooltip" data-tooltip="Click for More!">Learn More</span>
                     </div>
                   </div>
                 </div>

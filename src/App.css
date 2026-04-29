@@ -19,7 +19,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background-color: rgb(245,245,245); */
 }
 
 h2 {
@@ -472,9 +471,7 @@ input {
   gap: 20px;
   justify-content: center;
   align-items: center;
-  /* padding: 4px; */
-  flex-direction: row;
-  /* width: calc(100% / 3); */
+  flex-direction: column;
 }
 
 
@@ -491,46 +488,49 @@ input {
   font-size: 1.3rem;
 }
 
-/*
-Showtimes Tooltip 
+/*  Tooltip */
 
-/* 1. The container needs relative positioning 
+/* 1. The container needs relative positioning */
 .tooltip {
   color: #929aa6;
+ 
   position: relative;
-  display: inline-block; /* Allows the element to wrap its content 
-  cursor: help; /* Optional: changes the cursor to a question mark 
+  display: inline-block; /* Allows the element to wrap its content */
+  margin: auto;
+  cursor: help; /* Optional: changes the cursor to a question mark */
 }
 
-/* 2. Style the tooltip content itself (using ::after pseudo-element) 
+/* 2. Style the tooltip content itself (using ::after pseudo-element) */
 .tooltip::after {
-  content: attr(data-tooltip); /* Retrieves text from the data attribute 
-  visibility: hidden; /* Hidden by default 
-  opacity: 0; /* Hidden by default, useful for transitions 
+  content: attr(data-tooltip); /* Retrieves text from the data attribute */
+  visibility: hidden; /* Hidden by default */
+  opacity: 0; /* Hidden by default, useful for transitions */
+  height: 20px;
 
-  /* Positioning 
+  /* Positioning */
   position: absolute;
-  bottom: 100%; /* Position above the hovered element 
+  bottom: 100%; /* Position above the hovered element */
   left: 50%;
-  transform: translateX(-50%); /* Centers the tooltip horizontally 
+  transform: translateX(-50%); /* Centers the tooltip horizontally */
 
   width: 260px;
-  background-color: black;
+  background-color: #669bbc;
   color: #fff;
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
-  white-space: nowrap; /* Prevents text from wrapping
+  white-space: nowrap; /* Prevents text from wrapping */
 
   /* Smooth transition */
-  /* transition: opacity 0.3s ease-in-out; */
+  transition: opacity 0.3s ease-in-out;
+}
 
-
-/* 3. Show the tooltip on hover 
+/* 3. Show the tooltip on hover */
 .tooltip:hover::after {
   visibility: visible;
   opacity: 1;
-} */
+}
+
 
 .movie__card--container:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -547,8 +547,9 @@ Showtimes Tooltip
   margin: 12px;
 }
 
-.movie__card--desc {
-  padding:1000px;
+.movie__card  .tooltip{
+  width: 50%;
+  margin: 0 auto;
 }
 
 .movie__search--label {
