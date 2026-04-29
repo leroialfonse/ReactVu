@@ -5,19 +5,14 @@ import axios from 'axios'
 const Movie = ({movie}) => {
 
   const [pageData, setPageData] = useState([])
-  // const {imdbID} = useParams();
 
   const navigate = useNavigate();
 
   const imdb = movie.imdbID
-// console.log(movie.imdbID)
-// console.log(imdb)
 
-  // console.log({id})
 
 
     async function moviePage() {
-    console.log("clicked");
     
     navigate(`/movieInfo/${imdb}`)
   }

@@ -21,9 +21,9 @@ const Search = ({data}) => {
   // const [imdbID, setimdbID] = useState([])
 
   // firing the search if a user clicks the magnifying glass
-  function onSearch() {
+  async function onSearch() {
     setLoading(true);
-    findMovies(setSearchTitle);
+    await findMovies(setSearchTitle);
     setLoading(false);
   }
 
@@ -39,10 +39,11 @@ const Search = ({data}) => {
   }
 
   useEffect(() => {
-    // setTimeout(() => {
+    setTimeout(() => {
       findMovies();
-      onSearch();
-    // }, 3000);
+    }, 3000);
+
+  
   }, []);
 
   async function sortMovies(filterOption) {
@@ -58,6 +59,7 @@ const Search = ({data}) => {
   async function switchPage(page) {
     // A good candidate for switch/case... maybe more pages too..
     try {
+      setLoading(true)
       if (page === "1") {
         const { data } = await axios.get(
           `https://www.omdbapi.com/?apikey=ac26afe9&s=${searchTitle || "alone"}&page=1`,
@@ -76,6 +78,7 @@ const Search = ({data}) => {
         setSearchMovies(data.Search.slice(0, 9));
         console.log(data)
       }
+      setLoading(false)
     } catch (error) {
       alert("Sorry! Couldn't find that !");
       console.error(error);
@@ -99,7 +102,7 @@ const Search = ({data}) => {
                   type="text"
                   id="search-input"
                   placeholder="Search Movies by Title..."
-                  value={searchTitle || null}
+                  value={searchTitle}
                   onChange={(event) => setSearchTitle(event.target.value)}
                   onKeyDown={(event) => {
                     event.key === "Enter" && onSearch();
@@ -154,10 +157,10 @@ const Search = ({data}) => {
           <p>Page</p>
           <select
             name="page"
-            id="selected"
+            // id="selected"
             onChange={(event) => switchPage(event.target.value)}
           >
-            <option value="" disabled selected defaultValue={"Select Page"}>
+            <option value="" disabled  defaultValue={"Select Page"}>
               Select Page
             </option>
             <option value="1">1</option>
@@ -204,28 +207,11 @@ const Search = ({data}) => {
           ))
         ) : (
           <div className="movie__list">
-            {searchMovies.map((movie) => (
+            {searchMovies.map((movie, index) => (
               < >
-              <Movie movie={movie} key={movie.imdbID} 
-              // onClick={() => moviePage()}
+              <Movie movie={movie} key={index} 
               />
-                {/* <div className="movie__card--container">
-                  <div
-                    className="movie__card"
-                    key={index}
-                    onClick={() => moviePage()}
-                  >
-                    <div key={movie.imdbID}>
-                      <img
-                        src={movie.Poster}
-                        alt=""
-                        className="movie__card--img"
-                      />
-                      <p className="movie__card-title">{movie.Title} </p>
-                      <p className="movie__card-year">{movie.Year}</p>
-                    </div>
-                  </div>
-                </div> */}
+              
               </>
             ))}
           </div>

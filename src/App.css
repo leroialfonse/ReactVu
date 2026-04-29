@@ -43,6 +43,12 @@ option {
   font-weight: 700;
 }
 
+.back{
+  border: 20px solid yellow;
+  z-index: 20 ;
+  font-size: xx-large;
+}
+
 a {
   text-decoration: none;
   color: #242424;
@@ -92,7 +98,6 @@ li {
 
 .home__movies {
   display: flex;
-  /* border: 20px solid red; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -131,7 +136,7 @@ li {
 .home__movies--img {
   width: 40%;
   max-width: 1120px;
-  padding-top: 2rem;
+  padding: 2rem;
   margin-bottom: -430px;
 }
 
@@ -142,7 +147,7 @@ h3 {
 }
 
 .red {
-  color: #d3261d;
+  color: #c1121f;
   font-weight: bold;
 }
 
@@ -164,7 +169,7 @@ header {
   left: 0;
   bottom: 0;
   right: 0;
-  height: 240px;
+  height: 340px;
   margin-bottom: 120px;
 
   /* width: 100%; */
@@ -241,7 +246,7 @@ nav {
 } */
 
 .contact:hover {
-  background-color: #a31d16;
+  background-color: #669bbc;
   transform: scale(1.1);
 }
 
@@ -346,7 +351,7 @@ input {
 
 .results {
   position: relative;
-  top: 300px;
+  top: 200px;
 }
 
 .results__header {
@@ -394,7 +399,7 @@ input {
   /* max-width: calc(100% / 3); */
   min-height: 40rem;
   /* max-height: 40rem; */
-  border: 2px solid red;
+  border: 2px solid #c1121f;
 
 }
 .skeleton__box{
@@ -414,7 +419,7 @@ input {
   /* max-width: calc(100% / 3); */
   min-height: 40rem;
   /* max-height: 40rem; */
-  border: 2px solid red;
+  border: 2px solid #c1121f;
 
 }
 
@@ -451,9 +456,10 @@ input {
   /* flex-wrap: wrap; */
   max-width: 25%;
   /* max-width: calc(100% / 3); */
+  min-width: 25%;
   min-height: 40rem;
   max-height: 40rem;
-  border: 4px solid red;
+  border: 4px solid #c1121f;
 }
 
 .movie__card {
@@ -476,7 +482,7 @@ input {
 
 .movie__card-year{
   
-  color: #a31d16;
+  color: #669bbc;
   text-align: center;
   font-size: 1.3rem;
 }
@@ -583,14 +589,10 @@ Showtimes Tooltip
   flex-direction: column;
   min-height: 40rem;
   max-height: 40rem;
-  border: 2px solid red;
+  border: 2px solid #c1121f;
 }
 
-/* .product__content {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-} */
+
 
 .product__card--img {
   width: 120px;
@@ -598,21 +600,21 @@ Showtimes Tooltip
   position: relative;
   overflow: hidden;
   animation: spin 2000ms infinite linear;
-  /* margin-left: 3rem; */
   margin-bottom: 5rem;
 }
 
 .product__title,
 .product__desc,
 .product__detail {
-  height: 14px;
+  height: 20px;
   border-radius: 4px;
   animation: pulse 1.5s infinite alternate;
+  background: linear-gradient(90deg, #9a9797, #575757);
+
 }
 
 .product__title {
   width: 40%;
-  color: green;
 }
 .product__desc {
   width: 60%;
@@ -663,41 +665,103 @@ Showtimes Tooltip
 /* Highlight Movie Pg */
 
 .highlight{
-  border: 2px solid red;
   display:flex;
   flex-direction: row;
   justify-content: center;
-
   align-items: center;
-  /* height: 360px; */
-  /* position:absolute; */
-
-  /* top: 10rem; */
-  /* margin-top: 600px; */
-  /* z-index: 1; */
-  height: 130vh;
+  margin-top:43vh;
+  gap: 24px;
 
 }
+
+.highlight__img{
+  padding: 12px;
+  width: 40%;
+  border-radius: 6%;
+}
+
+.highlight__title{
+  text-align: center;
+}
+
+.highlight__desc{
+  width: 30%;
+  display: flex;
+  flex-direction: column ;
+  gap: 2rem ;
+  justify-content: center ;
+  align-items: end;
+}
+
+.highlight__desc p{
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+
+
+.highlight__skeleton{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+ width: 90%;
+ gap: 16px;
+ height: 50vh;
+margin: 0 auto;
+
+}
+
+.highlight__skeleton--img{
+  width: 230px;
+  height: 230px;
+  position: relative;
+  overflow: hidden;
+  animation: spin 2000ms infinite linear;
+  margin-bottom: 5rem;
+}
+.highlight__text{
+  width:50%;
+  align-items: end;
+}
+
+.highlight__skeleton-desc
+{
+  width: 60%;
+}
+
+.highlight__skeleton--note{
+  justify-items: end;
+  padding-top: 40px;
+}
+
 
 /* Footer */
 
 footer {
   position: relative; 
- top: 450px;
-
+ top: 400px;
   background-color: #242424;
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 18px;
+  height: 300px;
 }
 
 .footer__row {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .footer__figure {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -768,6 +832,21 @@ footer {
   h2 {
     text-align: center;
   }
+
+  .highlight{
+    display:flex;
+    flex-direction: column;
+  }
+
+  .highlight__title{
+    width: 100%;
+  }
+  .highlight__desc{
+    align-items: center;
+    gap: 6px;
+  }
+
+
 }
 
 /* SMALL PHONES, LARGE SMARTPHONES */
