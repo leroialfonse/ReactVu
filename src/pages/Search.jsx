@@ -3,22 +3,21 @@ import Header from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, /*useLocation, useNavigate*/ } from "react-router-dom";
 import loadingTitles from "../assets/movieReel.png";
 import Movie from "../components/ui/Movie"
 
 const Search = ({data}) => {
   const { title } = useParams();
 
-  const location = useLocation();
-  const { searchedTitle } = location.state || {};
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const { searchedTitle } = location.state || {};
+  // const navigate = useNavigate();
 
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTitle, setSearchTitle] = useState(title);
-  const [sorted, setSorted] = useState([]);
-  // const [imdbID, setimdbID] = useState([])
+  // const [sorted, setSorted] = useState([]);
 
   // firing the search if a user clicks the magnifying glass
   async function onSearch() {

@@ -6,9 +6,6 @@ import Resume from "../assets/BrandonWhiteResume.pdf"
 
 const Header = () => {
 
-  const { title } = useParams();
-
-    const [searchTitle, setSearchTitle] = useState([]);
   
 
 

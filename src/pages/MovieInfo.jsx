@@ -24,13 +24,14 @@ const MovieInfo = ({movie}) => {
             setLoading(false)
         }
         
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         useEffect(() =>{
 
 
             setTimeout(() => {
 
                 showInfo();
-            }, 3000);
+            }, 5000);
         
             
         },[])
@@ -74,8 +75,11 @@ const MovieInfo = ({movie}) => {
                 <p>{movieData.Plot}</p>
                    <p> {movieData.rating}</p>
                 
-                <p className='movie__card-year'>Runtime: {movieData.Runtime}</p>
-                <p className='movie__card-year'>Release:  {movieData.Year}</p>
+                <div className="highlight__desc-info">
+                    
+                    <p className='movie__card-year'>Runtime: {movieData.Runtime}</p>
+                    <p className='movie__card-year'>Release:  {movieData.Year}</p>
+                </div>
             </div>
             </>
                 )
